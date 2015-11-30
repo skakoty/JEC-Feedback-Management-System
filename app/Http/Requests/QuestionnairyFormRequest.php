@@ -1,9 +1,8 @@
 <?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use App\User;
-use Auth;
-class HeadFormRequest extends Request {
+
+class QuestionnairyFormRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -12,11 +11,7 @@ class HeadFormRequest extends Request {
 	 */
 	public function authorize()
 	{
-		if($this->user()->can_post())
-	    {
-	      return true;
-	    }
-	    return false;
+		return false;
 	}
 
 	/**
@@ -27,8 +22,7 @@ class HeadFormRequest extends Request {
 	public function rules()
 	{
 		return [
-			'headid' => 'required',
-		    'headname' => 'required',
+			//
 		];
 	}
 

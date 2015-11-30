@@ -3,8 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Posts;
+use App\loginuser;
+
 
 use Illuminate\Http\Request;
 
@@ -19,27 +19,21 @@ class UserController extends Controller {
 	public function user_posts($id)
 	{
 		//
-		$posts = Posts::where('author_id',$id)->where('active','1')->orderBy('created_at','desc')->paginate(5);
-		$title = User::find($id)->name;
-		return view('home')->withPosts($posts)->withTitle($title);
+		return view('home');
 	}
 
 	public function user_posts_all(Request $request)
 	{
 		//
-		$user = $request->user();
-		$posts = Posts::where('author_id',$user->id)->orderBy('created_at','desc')->paginate(5);
-		$title = $user->name;
-		return view('home')->withPosts($posts)->withTitle($title);
+		
+		return view('home');
 	}
 	
 	public function user_posts_draft(Request $request)
 	{
 		//
-		$user = $request->user();
-		$posts = Posts::where('author_id',$user->id)->where('active','0')->orderBy('created_at','desc')->paginate(5);
-		$title = $user->name;
-		return view('home')->withPosts($posts)->withTitle($title);
+		
+		return view('home');
 	}
 
 	/**
@@ -47,7 +41,7 @@ class UserController extends Controller {
 	 */
 	public function profile(Request $request, $id) 
 	{
-		$data['user'] = User::find($id);
+		/*$data['user'] = loginuser::find($id);
 		if (!$data['user'])
 			return redirect('/');
 
@@ -62,7 +56,8 @@ class UserController extends Controller {
 		$data['posts_draft_count'] = $data['posts_count'] - $data['posts_active_count'];
 		$data['latest_posts'] = $data['user'] -> posts -> where('active', '1') -> take(5);
 		$data['latest_comments'] = $data['user'] -> comments -> take(5);
-		return view('admin.profile', $data);
+		return view('admin.profile', $data);*/
+		return view('home');
 	}
 
 }

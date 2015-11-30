@@ -1,14 +1,11 @@
 <?php namespace App\Http\Controllers;
 
-use App\HeadMaster;
-use App\User;
-use Redirect;
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\HeadFormRequest;
- 
+
 use Illuminate\Http\Request;
 
-class HeadMasterController extends Controller {
+class ControllerTeacher extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -18,7 +15,6 @@ class HeadMasterController extends Controller {
 	public function index()
 	{
 		//
-		 
 	}
 
 	/**
@@ -29,7 +25,6 @@ class HeadMasterController extends Controller {
 	public function create()
 	{
 		//
-		return view('head.add');
 	}
 
 	/**
@@ -37,15 +32,9 @@ class HeadMasterController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(HeadFormRequest $request)
+	public function store()
 	{
-		$head = new HeadMaster();
-	    $head->headid = $request->get('headid');
-	    $head->headname = $request->get('headname');
-	    	    
-	    $head->save();
-	    $message = 'Head saved successfully';
-	    return redirect('/headentry');
+		//
 	}
 
 	/**
@@ -55,10 +44,9 @@ class HeadMasterController extends Controller {
 	 * @return Response
 	 */
 	public function show($id)
-    {
-      $head = HeadMaster::find($id);
-      return view('head.show', array('head' => $head));
-    }
+	{
+		//
+	}
 
 	/**
 	 * Show the form for editing the specified resource.
